@@ -2,10 +2,14 @@
 #![no_main]
 
 use core::panic::PanicInfo;
+use bootloader::{BootInfo, entry_point};
 
-#[unsafe(no_mangle)]
-pub extern "C" fn _start() -> ! {
-    kudos::print!("Hello world!");
+entry_point!(main);
+fn main(boot_info: &'static BootInfo) -> ! {
+    kudos::init(boot_info, true);
+
+    kudos::printlgln!("Hello world!");
+
     kudos::hlt_loop();
 }
 
