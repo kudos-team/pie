@@ -2,12 +2,23 @@
 #![no_main]
 
 use core::panic::PanicInfo;
+#[cfg(feature = "bootloader")]
 use bootloader::{BootInfo, entry_point};
 
-entry_point!(main);
-fn main(boot_info: &'static BootInfo) -> ! {
+#[cfg(feature = "bootloader")]
+entry_point!(bl_main);
+#[cfg(feature = "bootloader")]
+fn bl_main(boot_info: &'static BootInfo) -> ! {
     kudos::init(boot_info, true);
+    main()
+}
+#[cfg(not(feature = "bootloader"))]
+#[no_mangle]
+pub extern "C" fn _start() -> ! {
+    main()
+}
 
+fn main() -> ! {
     kudos::printlgln!("Hello world!");
 
     kudos::hlt_loop();
@@ -15,5 +26,5 @@ fn main(boot_info: &'static BootInfo) -> ! {
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    kudos::test_panic_handler(info)
+    kudos::real_panic_handler(info)
 }

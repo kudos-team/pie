@@ -1,8 +1,11 @@
 [package]
-name = "kudos"
+name = "Template"
 version = "0.0.0"
 edition = "2024"
 authors = ["Tsunami014 <tsunami014@duck.com>", "chishxd", "PixelSaver"]
+
+[features]
+bootloader = []
 
 [dependencies]
 kudos = { git = "https://github.com/kudos-team/kernel.git", branch = "main" }

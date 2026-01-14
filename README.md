@@ -8,15 +8,16 @@ cargo update
 ```
 
 ## Doing stuff with the code
+`--features bootloader` will make the executable use the bootloader init. Useful when running without the KudOS main kernel, but for using with the kernel do not use it.
 ### Building
 ```bash
 cargo build
 ```
 ### Running
 ```bash
-cargo run
+cargo run --features bootloader
 ```
 ### Testing
 ```bash
-cargo test
+cargo test --features bootloader
 ```

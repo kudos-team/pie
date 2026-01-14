@@ -3,6 +3,14 @@
 version = 4
 
 [[package]]
+name = "Template"
+version = "0.0.0"
+dependencies = [
+ "bootloader",
+ "kudos",
+]
+
+[[package]]
 name = "bit_field"
 version = "0.10.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -83,15 +91,7 @@ dependencies = [
 [[package]]
 name = "kudos"
 version = "0.0.0"
-dependencies = [
- "bootloader",
- "kudos 0.0.0 (git+https://github.com/kudos-team/kernel.git?branch=main)",
-]
-
-[[package]]
-name = "kudos"
-version = "0.0.0"
-source = "git+https://github.com/kudos-team/kernel.git?branch=main#a5d56209c53a51cca8ed13a86af0b2e6f7748f38"
+source = "git+https://github.com/kudos-team/kernel.git?branch=main#3236c5a76d6fb37b5e49dc36258a6c5251edb5e1"
 dependencies = [
  "bootloader",
  "conquer-once",
